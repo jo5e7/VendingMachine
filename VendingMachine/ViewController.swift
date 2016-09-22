@@ -74,6 +74,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         updateCellBackgroundColor(indexPath, selected: true)
         
+        
         currentSelection = vendingMachine.selection[indexPath.row]
         
     }
