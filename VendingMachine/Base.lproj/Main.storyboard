@@ -41,6 +41,10 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" red="0.96862745100000003" green="0.80000000000000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Add $5"/>
+                                                <connections>
+                                                    <action selector="depositFunds" destination="BYZ-38-t0r" eventType="touchUpInside" id="34U-sb-I8A"/>
+                                                    <segue destination="Sjf-LH-ep7" kind="presentation" id="ezs-gS-Tww"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +73,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="vendingItem" id="FXb-Nf-UtE" customClass="VendingItemCell" customModule="VendingMachine" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="196" height="196"/>
+                                                <rect key="frame" x="89.5" y="0.0" width="196" height="196"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="196" height="196"/>
@@ -162,12 +166,58 @@
                         <outlet property="balanceLabel" destination="T4d-xZ-BoX" id="teE-Tl-Pi0"/>
                         <outlet property="collectionView" destination="8OG-jm-3JZ" id="40h-Bj-3fx"/>
                         <outlet property="quantityLabel" destination="ehp-um-cli" id="sOx-UY-fe6"/>
+                        <outlet property="quantityStepper" destination="xsJ-mF-Vul" id="xTj-Ii-1g9"/>
                         <outlet property="totalLabel" destination="eqM-sa-SEQ" id="SC7-N0-w1h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1020" y="657"/>
+        </scene>
+        <!--Deposit Controller-->
+        <scene sceneID="dd2-fP-pnf">
+            <objects>
+                <viewController id="Sjf-LH-ep7" customClass="DepositController" customModule="VendingMachine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GNd-D2-RKh"/>
+                        <viewControllerLayoutGuide type="bottom" id="gcS-Bl-gOz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QQF-Un-qwg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNL-NY-CfM">
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="321-G7-hi4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="Yh1-5B-9yK"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismiss" destination="Sjf-LH-ep7" eventType="touchUpInside" id="cLB-qi-kpx"/>
+                                    <action selector="purchase" destination="BYZ-38-t0r" eventType="touchUpInside" id="y7t-wX-8TL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funds succesfully added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjl-jM-n3v">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1176470588" green="0.14117647059999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mNL-NY-CfM" firstAttribute="leading" secondItem="QQF-Un-qwg" secondAttribute="leading" id="FfW-l7-SeL"/>
+                            <constraint firstItem="gcS-Bl-gOz" firstAttribute="top" secondItem="mNL-NY-CfM" secondAttribute="bottom" id="ZZ6-Ak-CUJ"/>
+                            <constraint firstItem="zjl-jM-n3v" firstAttribute="centerY" secondItem="QQF-Un-qwg" secondAttribute="centerY" id="d9l-Mm-cB4"/>
+                            <constraint firstItem="zjl-jM-n3v" firstAttribute="centerX" secondItem="QQF-Un-qwg" secondAttribute="centerX" id="oW2-Ut-gOZ"/>
+                            <constraint firstAttribute="trailing" secondItem="mNL-NY-CfM" secondAttribute="trailing" id="soX-p4-WbW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90u-Ks-Jeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="655.32233883058473"/>
         </scene>
     </scenes>
     <resources>
